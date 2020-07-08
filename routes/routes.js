@@ -8,6 +8,6 @@ router.get('/', (req, res) => {
 
 router.use('/contactus', require('./ContactUs'))
 router.use('/demorequests', require('./demoRequests'))
-router.use('/adminpanelusers', require('./adminPanelUsers'))
+router.use('/AdminPanelUsers', require('./adminPanelUsers'))
 
 module.exports = router
