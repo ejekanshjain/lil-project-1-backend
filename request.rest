@@ -1,0 +1,3 @@
+DELETE http://localhost:5000/adminPanelUsers/5f057005565062b7ecb98ec5
+
+###

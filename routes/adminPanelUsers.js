@@ -42,15 +42,7 @@ router.post('/', async (req, res) => {
 })
 
 router.delete('/:id',async (req, res)=>{
-    try {
-        const AdminPanelUsers = await adminPanelUsers.delete({
-            _id: req.params.id
-        })
-        res.json({ status: 200, message: 'Successfully Deleted' })
-    } catch (err) {
-        console.log(err)
-        res.json({  message: 'Invalid ID!' })
-    }
+    await adminPanelUsers.deleteOne({_id: req.params.id})
 })
 
 module.exports = router
