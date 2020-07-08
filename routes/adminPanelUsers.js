@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require('bcryptjs')
 
 const adminPanelUsers = require('../models/adminPanelUsers')
 
@@ -31,12 +32,24 @@ router.post('/', async (req, res) => {
         const AdminPanelUsers = await adminPanelUsers.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: await bcrypt.hash(req.body.password, 10)
         })
         res.status(201).json({ status: 201, message: 'Added Successfully!', data: { AdminPanelUsers } })
     } catch (err) {
         console.log(err)
-        res.json({ status: 500, message: 'Somthing Went Wrong!' })
+        res.json({ status: 500, message: 'Something Went Wrong!' })
+    }
+})
+
+router.delete('/:id',async (req, res)=>{
+    try {
+        const AdminPanelUsers = await adminPanelUsers.delete({
+            _id: req.params.id
+        })
+        res.json({ status: 200, message: 'Successfully Deleted' })
+    } catch (err) {
+        console.log(err)
+        res.json({  message: 'Invalid ID!' })
     }
 })
 
