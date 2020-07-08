@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 })
 
 router.use('/contactus', require('./ContactUs'))
-router.use('/DemoRequest', require('./demoRequests'))
-router.use('/adminpanelusers', require('./adminPanelUsers'))
+router.use('/Demorequests', require('./demoRequests'))
+router.use('/AdminPanelUsers', require('./adminPanelUsers'))
 
 module.exports = router
