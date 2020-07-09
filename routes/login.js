@@ -1,5 +1,6 @@
 const express = require('express')
 <<<<<<< HEAD
+<<<<<<< HEAD
 const bcrypt = require('bcryptjs')
 
 const login = require('../models/login')
@@ -75,11 +76,58 @@ router.delete('/:id', async (req, res) => {
     }
 =======
 
+=======
+const jwt = require('jsonwebtoken')
+>>>>>>> d24dff0ea65493112b3b62072d8e64d8f8b30270
 const router = express.Router()
 
+router.post('/posts',verifyToken,(res,req)=>{
+    jwt.verify(req.token,'secretkey',(err,authData)=>{
+        if(err){
+            res.sendStatus(403);
+        }
+        else{
+            res.json({
+                message:'Post created..',
+                authData
+            })
+        }
+    })
+    res.json({
+
+    })
+})
+
 router.get('/', (req, res) => {
+<<<<<<< HEAD
   res.send('LOL')
 >>>>>>> df9951ef084f59e8bf4c9db3b82cf9abeb974c02
+=======
+    const user = {
+        id : 1,
+        email : 'prernapaliwal80@gmail.com',
+        password : 'prerna'
+    }
+    jwt.sign({user},'secretkey',(err,token)=>{
+        res.json({
+            token
+        })
+    })
+>>>>>>> d24dff0ea65493112b3b62072d8e64d8f8b30270
 })
+
+function verifyToken(req,res,next){
+    const header = req.headers['authorization'];
+
+    if(typeof header !== 'undefined'){
+        const heads = header.split(' ');
+        const headsToken = heads[1];
+        req.token = headsToken;
+        next();
+    }
+    else{
+        res.sendStatus(403);
+    }
+}
 
 module.exports = router
