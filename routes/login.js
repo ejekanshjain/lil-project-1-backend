@@ -1,4 +1,5 @@
 const express = require('express')
+<<<<<<< HEAD
 const bcrypt = require('bcryptjs')
 
 const login = require('../models/login')
@@ -72,6 +73,13 @@ router.delete('/:id', async (req, res) => {
         console.log(err)
         res.json({ message: 'Invalid ID!' })
     }
+=======
+
+const router = express.Router()
+
+router.get('/', (req, res) => {
+  res.send('LOL')
+>>>>>>> df9951ef084f59e8bf4c9db3b82cf9abeb974c02
 })
 
 module.exports = router
