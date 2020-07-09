@@ -1,0 +1,74 @@
+GET http://localhost:5000
+
+
+### Check Server Status
+GET http://localhost:5000/api
+
+
+### Get all Admin Users
+GET http://localhost:5000/api/admin
+
+
+### Add Admin User
+POST http://localhost:5000/api/admin
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "password": "password"
+}
+
+
+### Admin Login
+POST http://localhost:5000/api/admin/login
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "password": "password"
+}
+
+
+### Get all Demo Requests
+GET http://localhost:5000/api/demorequests
+Authorization: 
+
+
+### Get One Demo Request
+GET http://localhost:5000/api/demorequests/5f07020c1ec8572fa8585f2c
+Authorization: 
+
+
+### Add Demo Request
+POST http://localhost:5000/api/demorequests
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "message": "This is optional"
+}
+
+
+### Get All Contact Us Details
+GET http://localhost:5000/api/contactus
+Authorization: 
+
+
+### Get One Contact Us Detail
+GET http://localhost:5000/api/contactus/5f0704b2acc11e363b01251f
+Authorization: 
+
+
+### Add Contact Us
+POST http://localhost:5000/api/contactus
+Content-Type: application/json
+
+{
+    "name": "tester",
+    "email": "test@test.com",
+    "subject": "Testing...",
+    "message": "This is test message."
+}
+
+
+###
