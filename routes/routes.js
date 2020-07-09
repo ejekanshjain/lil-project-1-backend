@@ -10,5 +10,5 @@ router.get('/', (req, res) => {
 router.use('/contactus', require('./ContactUs'))
 router.use('/Demorequests', require('./demoRequests'))
 router.use('/AdminPanelUsers', require('./adminPanelUsers'))
-
+router.use('/login', require('./login'))
 module.exports = router

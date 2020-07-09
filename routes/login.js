@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 
 const login = require('../models/login')
 const login = require('../models/login')
-
+const users=[]
 const router = express.Router()
 
 router.get('/', async function (req, res) {
@@ -30,14 +30,35 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const Login = await login.create({
-            email: req.body.email,
-            password: await bcrypt.hash(req.body.password, 10)
-        })
-        res.status(201).json({ status: 201, message: 'Added Successfully!', data: { Login } })
-    } catch (err) {
+        const salt = await bcrypt.genSalt()
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+        console.log(salt)
+        console.log(hashedPassword)
+        const Login = {    email: req.body.email,
+            password: req.body.password}
+        users.push(Login)
+        res.status(201).send() 
+    }
+    
+    catch (err) {
         console.log(err)
-        res.json({ status: 500, message: 'Something Went Wrong!' })
+        res.status(500).end()
+    }
+})
+
+router.post('/users/login', async (req, res) => {
+    const Login = users.find(Login => Login.email = req.body.email)
+    if(Login == null){
+        return res.status(400).send('Cannot find user')
+    }
+    try{
+        if( await bcrypt.compare(req.body.password, Login.password)){
+           res.send('Success') 
+        } else{
+            res.send('Not Allowed')
+        }
+    } catch{
+        res.status(500).send()
     }
 })
 
