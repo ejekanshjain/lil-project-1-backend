@@ -1,15 +1,16 @@
-GET http://localhost:5000/demorequests
+GET http://localhost:3000/users
 
 
 ###
-POST http://localhost:5000/demorequests
+POST http://localhost:3000/users/login 
 Content-Type: application/json
 
 {
-    "email": "ejekanshjain@gmail.com",
-    "message": "TEST"
+"name": "Kyle", "password": "password"
 }
-
 
 ###
 DELETE http://localhost:5000/demorequests/5f055832227e2b19e8f5613f
+
+
+

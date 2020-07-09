@@ -1,56 +1,40 @@
 const express = require('express')
-const bcrypt = require('bcryptjs')
+const app = express()
+const bcrypt = require('bcrypt')
 
-const login = require('../models/login')
-const login = require('../models/login')
+app.use(express.json())
 
-const router = express.Router()
+const users = []
 
-router.get('/', async function (req, res) {
-    try {
-        const Login = await login.find()
-        res.json({ status: 200, data: { Login } })
-    } catch (err) {
-        console.log(err)
-        res.json({ status: 500, message: 'Something Went Wrong!' })
-    }
+app.get('/users', (req, res) => {
+  res.json(users)
 })
 
-router.get('/:id', async (req, res) => {
-    try {
-        const Login = await login.findOne({
-            _id: req.params.id
-        })
-        res.json({ status: 200, data: { Login } })
-    } catch (err) {
-        console.log(err)
-        res.json({ status: 500, message: 'Somthing Went Wrong!' })
-    }
+app.post('/users', async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    const user = { name: req.body.name, password: hashedPassword }
+    users.push(user)
+    res.status(201).send()
+  } catch {
+    res.status(500).send()
+  }
 })
 
-router.post('/', async (req, res) => {
-    try {
-        const Login = await login.create({
-            email: req.body.email,
-            password: await bcrypt.hash(req.body.password, 10)
-        })
-        res.status(201).json({ status: 201, message: 'Added Successfully!', data: { Login } })
-    } catch (err) {
-        console.log(err)
-        res.json({ status: 500, message: 'Something Went Wrong!' })
+app.post('/users/login', async (req, res) => {
+  const user = users.find(user => user.name === req.body.name)
+  if (user == null) {
+    return res.status(400).send('Cannot find user')
+  }
+  try {
+    if(await bcrypt.compare(req.body.password, user.password)) {
+      res.send('Success')
+    } else {
+      res.send('Not Allowed')
     }
+  } catch {
+    res.status(500).send()
+  }
 })
 
-router.delete('/:id', async (req, res) => {
-    try {
-        await login.deleteOne({
-            _id: req.params.id
-        })
-        res.json({ status: 200, message: 'Successfully Deleted' })
-    } catch (err) {
-        console.log(err)
-        res.json({ message: 'Invalid ID!' })
-    }
-})
-
-module.exports = router
+app.listen(3000)
