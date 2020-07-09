@@ -10,11 +10,12 @@ router.get('/', async function (req, res) {
         res.json({ status: 200, data: { DemoRequest } })
     } catch (err) {
         console.log(err)
-        res.json({ status: 500, message: 'Somthing Went Wrong!' })
+        res.json({ status: 500, message: 'Something Went Wrong!' })
     }
 })
 
 router.get('/:id', async (req, res) => {
+    
     try {
         const DemoRequest = await demoRequests.findOne({
             _id: req.params.id
@@ -39,5 +40,10 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.delete('/user/:id', (req,res)=>{
+    await
+    demoRequests.deleteOne({_id:req.params.id})
+
+});
 
 module.exports = router
