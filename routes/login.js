@@ -46,6 +46,12 @@ router.post('/',verifyToken,(res,req)=>{
 
     
     }
+    else{
+        res.json({
+            status:false,
+            message:"Invalid Email"
+        })
+    }
 
 }
 
@@ -63,5 +69,6 @@ router.post('/',verifyToken,(res,req)=>{
         else{
             res.sendStatus(403);
         }
+
     }
 module.exports = router
