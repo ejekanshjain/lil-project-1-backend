@@ -1,11 +1,12 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 const router = express.Router()
 
-const User = require('../models/login')
+
 const AdminPanelUser = require('../models/adminPanelUsers')
 
-router.post('/',async(res,req)=>{
+router.post('/',async(req,res)=>{
     const {email,password} = req.body;
     if(!email || !password)
         return res.status(400).json({
@@ -14,7 +15,7 @@ router.post('/',async(res,req)=>{
             message:"Email and Password is required"
         })
         try{
-            user = await AdminPanelUser.findOne({
+            const user = await AdminPanelUser.findOne({
                 email
             })
             if(!user)
@@ -23,13 +24,13 @@ router.post('/',async(res,req)=>{
                     success: false,
                     message:"Invalid Email or Password "
             })
-            if(!(await bcrypt.compare(password, User.password)))
+            if(!(await bcrypt.compare(password, user.password)))
                 return res.status(400).json({
                     status:400,
                     success: false,
                     message:"Invalid Email or Password "
             })
-            const token = jwt.sign({_id:user.id},process.env.JWT_SECRET)
+            const token = jwt.sign({_id:user._id},process.env.JWT_SECRET)
             res.json({
                 status:200,
                 success:true,
