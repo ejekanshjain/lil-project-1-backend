@@ -3,72 +3,45 @@ const jwt = require('jsonwebtoken')
 const router = express.Router()
 
 const User = require('../models/login')
+const AdminPanelUser = require('../models/adminPanelUsers')
 
-router.post('/',verifyToken,(res,req)=>{
-    
-    user = User.findOne({email:req.body.email})
-    if(user){
-        bcrypt.compare(req.body.password, this.password, function(err, isMatch) {
-            if (err) return res.json({
-                message:"Invalid Password"
-            });
-            else{
-                jwt.verify(req.token,'secretkey',(err,authData)=>{
-                    if(err){
-                        res.sendStatus(403);
-                    }
-                    else{
-                        res.json({
-                            message:'Post created..',
-                            authData
-                        })
-                    }
-                })
-            
-            
-            router.get('/', (req, res) => {
-                const user = {
-                    id : 1,
-                    email : req.body.email,
-                    password : req.body.password
-                }
-                jwt.sign({user},'secretkey',(err,token)=>{
-                    res.json({
-                        token
-                    })
-                })
+router.post('/',async(res,req)=>{
+    const {email,password} = req.body;
+    if(!email || !password)
+        return res.status(400).json({
+            status:400,
+            success: false,
+            message:"Email and Password is required"
+        })
+        try{
+            user = await AdminPanelUser.findOne({
+                email
             })
-            
-            
+            if(!user)
+                return res.status(400).json({
+                    status:400,
+                    success: false,
+                    message:"Invalid Email or Password "
+            })
+            if(!(await bcrypt.compare(password, User.password)))
+                return res.status(400).json({
+                    status:400,
+                    success: false,
+                    message:"Invalid Email or Password "
+            })
+            const token = jwt.sign({_id:user.id},process.env.JWT_SECRET)
+            res.json({
+                status:200,
+                success:true,
+                data:{
+                    user : user,
+                    token
+                }
+            })
 
-            }
-        })
-
-    
-    }
-    else{
-        res.json({
-            status:false,
-            message:"Invalid Email"
-        })
-    }
-
-}
-
-
-    );
-    function verifyToken(req,res,next){
-        const header = req.headers['authorization'];
-    
-        if(typeof header !== 'undefined'){
-            const heads = header.split(' ');
-            const headsToken = heads[1];
-            req.token = headsToken;
-            next();
+        }catch(err){
+            console.log(err)
         }
-        else{
-            res.sendStatus(403);
-        }
+    });
 
-    }
 module.exports = router
