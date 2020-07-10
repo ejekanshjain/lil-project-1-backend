@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5000/demorequests/5f055832227e2b19e8f5613f
+GET http://localhost:5000/adminPanelUsers/
 
 
 
