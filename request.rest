@@ -1,16 +1,29 @@
-GET http://localhost:3000/users
-
-
-###
-POST http://localhost:3000/users/login 
+POST   http://localhost:5000/AdminPanelUsers
 Content-Type: application/json
 
 {
-"name": "Kyle", "password": "password"
+"name":"LOL","email": "LOL", "password": "LOL"
 }
+
+
+###
+POST http://localhost:5000/login 
+Content-Type: application/json
+
+{
+"email": "LOL", "password": "LOL"
+}
+
+
 
 ###
 GET http://localhost:5000/adminPanelUsers/
 
+###
+POST http://localhost:5000/login
+Content-Type: application/json
 
-
+{
+    "email": "ejekanshjain@gmail.com",
+    "password": "$2a$10$rArAQabn5KHtED0Q13bFHeUg7lO4IjDPovkYM3iZt5TBJYA25Nrt2"
+}

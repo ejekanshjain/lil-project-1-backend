@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
         res.status(201).json({ status: 201, message: 'Added Successfully!', data: { DemoRequest } })
     } catch (err) {
         console.log(err)
-        res.json({ status: 500, message: 'Somthing Went Wrong!' })
+        res.json({ status: 500, message: 'Something Went Wrong!' })
     }
 })
 
