@@ -6,4 +6,4 @@ const AboutSchema = new mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('about', AboutSchema)
+module.exports = mongoose.model('About', AboutSchema)

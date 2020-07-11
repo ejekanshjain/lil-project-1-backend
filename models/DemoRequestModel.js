@@ -12,4 +12,4 @@ const DemoRequest = new mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('demoRequest', DemoRequest)
+module.exports = mongoose.model('DemoRequest', DemoRequest)

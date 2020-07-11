@@ -14,4 +14,4 @@ const AdminPanelUserSchema = new mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('adminPanelUser', AdminPanelUserSchema)
+module.exports = mongoose.model('AdminPanelUser', AdminPanelUserSchema)
