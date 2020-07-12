@@ -71,4 +71,40 @@ Content-Type: application/json
 }
 
 
+### Get All Testimonials
+GET http://localhost:5000/api/testimonials
+
+
+### Get All Deleted Testimonials
+GET http://localhost:5000/api/testimonials?deleted=true
+Authorization: 
+
+
+### Get One Testimonial
+GET http://localhost:5000/api/testimonials/5f0aa2e2c9da121df8368fc2
+
+
+### Add Testimonial
+POST http://localhost:5000/api/testimonials
+Authorization: 
+Content-Type: multipart/form-data
+
+{
+    "name": "Test Name",
+    "email": "test@test.com",
+    "comment": "test comment",
+    "image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Delete Testimonial
+DELETE http://localhost:5000/api/testimonials/5f0aa2e2c9da121df8368fc2
+Authorization: 
+
+
+### Restore Testimonial
+DELETE http://localhost:5000/api/testimonials/5f0aa2e2c9da121df8368fc2?delete=false
+Authorization: 
+
+
 ###

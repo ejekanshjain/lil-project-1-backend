@@ -44,7 +44,7 @@ if (process.env.NODE_ENV !== 'production') {
             res.status(201).json({
                 status: 201,
                 success: true,
-                message: 'User Added Successfully!'
+                message: 'Added Successfully!'
             })
         } catch (err) {
             if (err.code === 11000)

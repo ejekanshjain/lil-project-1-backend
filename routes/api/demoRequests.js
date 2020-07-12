@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/', checkUserAuthenticated, async (req, res) => {
     try {
-        const demoRequests = await DemoRequest.find()
+        const demoRequests = await DemoRequest.find().sort({ createdAt: -1 })
         res.json({
             status: 200,
             success: true,

@@ -12,6 +12,6 @@ router.get('/', (req, res) =>
 router.use('/admin', require('./admin'))
 router.use('/demorequests', require('./demoRequests'))
 router.use('/contactus', require('./contactUs'))
-router.use('/upload', require('./upload'))
+router.use('/testimonials', require('./testimonials'))
 
 module.exports = router

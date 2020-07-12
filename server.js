@@ -4,6 +4,9 @@ const cors = require('cors')
 const helmet = require('helmet')
 
 require('./db')
+require('./middlewares')
+require('./models')
+require('./util')
 
 const port = process.env.PORT
 
