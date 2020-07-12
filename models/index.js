@@ -5,5 +5,6 @@ module.exports = {
     Course: require('./CourseModel'),
     Curator: require('./CuratorModel'),
     DemoRequest: require('./DemoRequestModel'),
+    TeamMember: require('./TeamMemberModel'),
     Testimonial: require('./TestimonialModel')
 }
