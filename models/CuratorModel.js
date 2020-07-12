@@ -1,23 +1,20 @@
 const mongoose = require('mongoose')
 
-const AboutSchema = new mongoose.Schema({
-    whatAreWe: {
+const CuratorSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true
     },
-    whatWereWe: {
+    imageUrl: {
         type: String,
         required: true
     },
-    whatWeDo: {
+    specialization: {
         type: String,
         required: true
-    },
-    linkedin: String,
-    facebook: String,
-    github: String
+    }
 }, {
     timestamps: true
 })
 
-module.exports = mongoose.model('About', AboutSchema)
+module.exports = mongoose.model('Curator', CuratorSchema)
