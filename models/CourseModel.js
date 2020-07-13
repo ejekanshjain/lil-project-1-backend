@@ -8,6 +8,10 @@ const CourseSchema = new mongoose.Schema({
     videoUrl: {
         type: String,
         required: true
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: true
