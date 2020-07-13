@@ -1,18 +1,18 @@
 const express = require('express')
 
 const { checkUserAuthenticated } = require('../../middlewares')
-const { About } = require('../../models')
+const { ContactDetails } = require('../../models')
 
 const router = express.Router()
 
 router.get('/', async (req, res) => {
     try {
-        const about = req.query.all === 'true' ? await About.find().sort({ createdAt: -1 }) : await About.find().sort({ createdAt: -1 }).limit(1)
+        const contactDetails = req.query.all === 'true' ? await ContactDetails.find().sort({ createdAt: -1 }) : await ContactDetails.find().sort({ createdAt: -1 }).limit(1)
         res.json({
             status: 200,
             success: true,
             data: {
-                about: req.query.all === 'true' ? about : about[0]
+                contactDetails: req.query.all === 'true' ? contactDetails : contactDetails[0]
             }
         })
     } catch (err) {
@@ -26,37 +26,51 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', checkUserAuthenticated, async (req, res) => {
-    const { whatAreWe, whatWereWe, whatWeDo } = req.body
-    if (!whatAreWe)
+    const { address, email, contactNumber, linkedin, facebook } = req.body
+    if (!address)
         return res.status(400).json({
             status: 400,
             success: false,
-            message: 'What are We is required!'
+            message: 'Address is required!'
         })
-    if (!whatWereWe)
+    if (!email)
         return res.status(400).json({
             status: 400,
             success: false,
-            message: 'What Were We is required!'
+            message: 'Wmail is required!'
         })
-    if (!whatWeDo)
+    if (!contactNumber)
         return res.status(400).json({
             status: 400,
             success: false,
-            message: 'What We Do is required!'
+            message: 'Contact Number is required!'
+        })
+    if (!linkedin)
+        return res.status(400).json({
+            status: 400,
+            success: false,
+            message: 'Linkedin is required!'
+        })
+    if (!facebook)
+        return res.status(400).json({
+            status: 400,
+            success: false,
+            message: 'Facebook is required!'
         })
     try {
-        const about = await About.create({
-            whatAreWe,
-            whatWereWe,
-            whatWeDo
+        const contactDetails = await ContactDetails.create({
+            address,
+            email,
+            contactNumber,
+            linkedin,
+            facebook
         })
         res.status(201).json({
             status: 201,
             success: true,
             message: 'Added Successfully!',
             data: {
-                about
+                contactDetails
             }
         })
     } catch (err) {

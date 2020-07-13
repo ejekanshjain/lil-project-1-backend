@@ -141,4 +141,48 @@ DELETE http://localhost:5000/api/courses/5f0bf22f86b6251e54d78083?delete=false
 Authorization: 
 
 
+### Get About Us
+GET http://localhost:5000/api/about
+
+
+### Get all About Us
+GET http://localhost:5000/api/about?all=true
+Authorization: 
+
+
+### Add About Us
+POST http://localhost:5000/api/about
+Authorization: 
+Content-Type: application/json
+
+{
+    "whatAreWe": "Developers at LIL",
+    "whatWereWe": "The Techno Students",
+    "whatWeDo": "Eat Sleep Code Repeat!"
+}
+
+
+### Get Contace Details
+GET http://localhost:5000/api/contactdetails
+
+
+### Get all Contact Details
+GET http://localhost:5000/api/contactdetails?all=true
+Authorization: 
+
+
+### Add Contact Details
+POST http://localhost:5000/api/contactdetails
+Authorization: 
+Content-Type: application/json
+
+{
+    "address": "IT Park, Udaipur (Rajasthan), INDIA",
+    "email": "learnindialearn@securelearning.com",
+    "contactNumber": "9876543210",
+    "linkedin": "https://linkedin.com/securelearning",
+    "facebook": "https://facebook.com/securelearning"
+}
+
+
 ###

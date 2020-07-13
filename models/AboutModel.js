@@ -12,10 +12,7 @@ const AboutSchema = new mongoose.Schema({
     whatWeDo: {
         type: String,
         required: true
-    },
-    linkedin: String,
-    facebook: String,
-    github: String
+    }
 }, {
     timestamps: true
 })
