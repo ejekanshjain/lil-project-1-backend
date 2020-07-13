@@ -162,7 +162,7 @@ Content-Type: application/json
 }
 
 
-### Get Contace Details
+### Get Contact Details
 GET http://localhost:5000/api/contactdetails
 
 
