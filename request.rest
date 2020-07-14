@@ -184,3 +184,16 @@ Content-Type: application/json
     "facebook": "https://facebook.com/securelearning"
 }
 
+
+
+
+###
+POST http://localhost:5000/api/bot/message
+Content-Type: application/json
+
+{
+    "message": "How long will it be until there is a vaccine?"
+}
+
+
+###

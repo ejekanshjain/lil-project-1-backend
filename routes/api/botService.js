@@ -1,70 +1,57 @@
-const express = require('express');
-const watson = require('ibm-watson');
-
+const AssistantV1 = require('ibm-watson/assistant/v1');
+const { IamAuthenticator } = require('ibm-watson/auth');
+const express = require('express')
 const router = express.Router();
 
-var assistant = new watson.AssistantV2({
-    iam_apikey: process.env.ASSISTANT_API_KEY,
-    version: '2018-11-08',
-    url: process.env.ASSISTANT_URL
+const assistant = new AssistantV1({
+    authenticator: new IamAuthenticator({ apikey: 'Zt1lrOnpnD0Zhn4lEmHDfOK3DUjQtKfqalUkRq-DgumX' }),
+    url: 'https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/5e221b9f-4218-4b71-abe2-9fe95341147d',
+    version: '2018-07-10'
 });
 
-router.get('/initializeSession', (req, res) => {
-    try {
-        assistant.createSession({
-            assistant_id: process.env.ASSISTANT_ID,
+
+router.post('/message', async (req, res) => {
+
+    const payload = {
+        workspaceId: process.env.WORKSPACE_ID || '13e6bf89-a37f-4f52-889b-304b71767f37',
+        input: {
+            text: '',
         },
-            (err, response) => {
-                var sessionData;
-                if (err) {
-                    console.error(err);
-                } else {
-                    console.log(JSON.stringify(response));
-                    sessionData = res.json(response);
-                }
-
-                return sessionData;
-            });
-    }
-    catch (err) {
-        console.log('\x1b[31m%s\x1b[0m', err)
-        res.status(500).json({
-            status: 500,
-            success: false,
-            message: 'Something Went Wrong!'
-        })
-    }
-});
-
-router.post('/msg', async (req, res) => {
-
-    var assistant_id = process.env.ASSISTANT_ID || '9a5d37fa-1880-4013-9b15-82d7c04cb4a0';
-
-    var payload = {
-        assistant_id: assistant_id,
-        input: {}
     };
     try {
         if (req.body) {
 
-            if (req.body.msg) {
-                payload.input = req.body.msg;
+            if (req.body.message) {
+                payload.input.text = req.body.message;
             }
 
-            if (req.body.sessionId) {
-                payload.session_id = req.body.session_id;
+            if (req.body.conversation_id) {
+                payload.conversation_id = req.body.conversation_id;
             }
-
             await assistant.message(payload, (err, data) => {
-                var response;
+
                 if (err) {
                     response = res.status(err.code || 500).json(err);
                 } else {
-                    response = res.json(data);
+
+                    res.json({
+                        status: 200,
+                        success: true,
+                        result: {
+                            message: data.result.output.text,
+                            conversation_id: data.result.context.conversation_id
+                        }
+                    });
                 }
 
-                return response;
             });
+        }
+        else {
+            res.status(500).json({
+                status: 500,
+                success: false,
+                message: 'Please provide message feild with this api to get'
+            })
         }
     }
     catch (err) {
@@ -77,4 +64,7 @@ router.post('/msg', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = router
+
+
+
