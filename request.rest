@@ -199,4 +199,38 @@ Content-Type: application/json
 }
 
 
+### Get All Gallery Images
+GET http://localhost:5000/api/gallery
+
+
+### Get All Deleted Gallery Images
+GET http://localhost:5000/api/gallery?deleted=true
+Authorization: 
+
+
+### Get One Gallery Image
+GET http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2
+
+
+### Add Gallery Image
+POST http://localhost:5000/api/gallery
+Authorization: 
+Content-Type: multipart/form-data
+
+{
+    "label": "test",
+    "image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Delete Gallery Image
+DELETE http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2
+Authorization: 
+
+
+### Restore Gallery Image
+DELETE http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2?delete=false
+Authorization: 
+
+
 ###
