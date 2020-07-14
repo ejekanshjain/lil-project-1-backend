@@ -17,6 +17,7 @@ router.use('/courses', require('./courses'))
 router.use('/about', require('./about'))
 router.use('/contactdetails', require('./contactDetails'))
 router.use('/gallery', require('./gallery'))
+router.use('/teammembers', require('./teamMembers'))
 // router.use('/bot', require('./botService'))
 
 module.exports = router
