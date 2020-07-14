@@ -1,5 +1,5 @@
 const express = require('express');
-const watson = require('watson-developer-cloud');
+const watson = require('ibm-watson/assistant/v2');
 
 const router = express.Router();
 
@@ -9,7 +9,7 @@ var assistant = new watson.AssistantV2({
     url: process.env.ASSISTANT_URL
 });
 
-router.get('/initializeSession', (req, res) => {
+router.get('/initialize', (req, res) => {
     try {
         assistant.createSession({
             assistant_id: process.env.ASSISTANT_ID,
@@ -36,7 +36,7 @@ router.get('/initializeSession', (req, res) => {
     }
 });
 
-router.post('/msg', async (req, res) => {
+router.post('/message', async (req, res) => {
 
     var assistant_id = process.env.ASSISTANT_ID || '9a5d37fa-1880-4013-9b15-82d7c04cb4a0';
 
@@ -77,4 +77,4 @@ router.post('/msg', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = router

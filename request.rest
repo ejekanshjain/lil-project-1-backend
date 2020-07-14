@@ -184,3 +184,19 @@ Content-Type: application/json
     "facebook": "https://facebook.com/securelearning"
 }
 
+
+### Initialize Bot Service
+GET http://localhost:5000/api/bot/initialize
+
+
+###
+POST http://localhost:5000/api/message
+Content-Type: application/json
+
+{
+    "session_id": "",
+    "msg": "Hello"
+}
+
+
+###

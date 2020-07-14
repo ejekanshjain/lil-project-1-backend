@@ -17,5 +17,6 @@ router.use('/courses', require('./courses'))
 router.use('/about', require('./about'))
 router.use('/contactdetails', require('./contactDetails'))
 router.use('/curator', require('./curator'))
+router.use('/bot', require('./botService'))
 
 module.exports = router
