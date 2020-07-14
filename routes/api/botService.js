@@ -15,7 +15,6 @@ router.post('/message', async (req, res) => {
     const payload = {
         workspaceId: process.env.WORKSPACE_ID || '13e6bf89-a37f-4f52-889b-304b71767f37',
         input: {
-            text: '',
         },
     };
     try {

@@ -87,7 +87,6 @@ GET http://localhost:5000/api/testimonials/5f0aa2e2c9da121df8368fc2
 ### Add Testimonial
 POST http://localhost:5000/api/testimonials
 Authorization: 
-Content-Type: multipart/form-data
 
 {
     "name": "Test Name",
@@ -185,15 +184,96 @@ Content-Type: application/json
 }
 
 
+### Get All Gallery Images
+GET http://localhost:5000/api/gallery
 
 
-###
+### Get All Deleted Gallery Images
+GET http://localhost:5000/api/gallery?deleted=true
+Authorization: 
+
+
+### Get One Gallery Image
+GET http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2
+
+
+### Add Gallery Image
+POST http://localhost:5000/api/gallery
+Authorization: 
+
+{
+    "label": "test",
+    "image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Delete Gallery Image
+DELETE http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2
+Authorization: 
+
+
+### Restore Gallery Image
+DELETE http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2?delete=false
+Authorization: 
+
+
+### Get all Team Members
+GET http://localhost:5000/api/teammembers
+
+
+### Get all Deleted Team Members
+GET http://localhost:5000/api/teammembers?deleted=true
+
+
+### Get One Team Member
+GET http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed
+
+
+### Add Team Member
+POST http://localhost:5000/api/teammembers
+Authorization: 
+
+{
+	"name": "Ekansh Jain",
+	"email": "ejekanshjain@gmail.com",
+	"contactNumber": "9530077351",
+	"description": "The Beginning is the End, And the End is the Beginning",
+	"linkedin": "https://linkedin.com/in/ejekanshjain",
+	"twitter": "https://twitter.com",
+	"image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Update One team Memeber
+PATCH http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed
+Authorization: 
+
+{
+	"name": "Ekansh Jain",
+	"email": "ejekanshjain@gmail.com",
+	"contactNumber": "9530077351",
+	"description": "The Beginning is the End, And the End is the Beginning",
+	"linkedin": "https://linkedin.com/in/ejekanshjain",
+	"twitter": "https://twitter.com",
+	"image": "jpg, jpeg or png less than 5 mb and is optional"
+}
+
+
+### Delete Team Member
+DELETE http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed
+Authorization: 
+
+
+### Restore Team Member
+DELETE http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed?delete=false
+Authorization: 
+
+
+### bot service
 POST http://localhost:5000/api/bot/message
 Content-Type: application/json
 
 {
-    "message": "How long will it be until there is a vaccine?"
+    "message" : "text here",
+    "conversation_id": "set conversation_id here"
 }
-
-
-###

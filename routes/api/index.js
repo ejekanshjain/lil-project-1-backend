@@ -16,7 +16,8 @@ router.use('/testimonials', require('./testimonials'))
 router.use('/courses', require('./courses'))
 router.use('/about', require('./about'))
 router.use('/contactdetails', require('./contactDetails'))
-router.use('/curator', require('./curator'))
+router.use('/gallery', require('./gallery'))
+router.use('/teammembers', require('./teamMembers'))
 router.use('/bot', require('./botService'))
 
 module.exports = router
