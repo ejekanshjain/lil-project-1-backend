@@ -1,5 +1,5 @@
 const express = require('express');
-const watson = require('watson-developer-cloud');
+const watson = require('ibm-watson');
 
 const router = express.Router();
 
