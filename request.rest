@@ -273,6 +273,62 @@ DELETE http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed?delete=fal
 Authorization: 
 
 
+### Get all Curators
+GET http://localhost:5000/api/curators
+
+
+### Get all Deleted Curators
+GET http://localhost:5000/api/curators?deleted=true
+
+
+### Get One Curator
+GET http://localhost:5000/api/curators/5f0d9f1a252fba2738edc6ed
+
+
+### Add Curator
+POST http://localhost:5000/api/curators
+Authorization: 
+
+{
+	"name": "Ekansh Jain",
+	"email": "ejekanshjain@gmail.com",
+	"contactNumber": "9530077351",
+	"title": "The Developer",
+	"description": "The Beginning is the End, And the End is the Beginning",
+	"github": "https://github.com/ejekanshjain",
+	"linkedin": "https://linkedin.com/in/ejekanshjain",
+	"twitter": "https://twitter.com",
+	"image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Update One Curator
+PATCH http://localhost:5000/api/curators/5f0d9f1a252fba2738edc6ed
+Authorization: 
+
+{
+	"name": "Ekansh Jain",
+	"email": "ejekanshjain@gmail.com",
+	"contactNumber": "9530077351",
+	"title": "The Developer",
+	"description": "The Beginning is the End, And the End is the Beginning",
+	"github": "https://github.com/ejekanshjain",
+	"linkedin": "https://linkedin.com/in/ejekanshjain",
+	"twitter": "https://twitter.com",
+	"image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Delete Curator
+DELETE http://localhost:5000/api/curators/5f0d9f1a252fba2738edc6ed
+Authorization: 
+
+
+### Restore Curator
+DELETE http://localhost:5000/api/curators/5f0d9f1a252fba2738edc6ed?delete=false
+Authorization: 
+
+
 ### bot service
 POST http://localhost:5000/api/bot/message
 Content-Type: application/json
@@ -281,3 +337,6 @@ Content-Type: application/json
     "message" : "text here",
     "conversation_id": "set conversation_id here"
 }
+
+
+###

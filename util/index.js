@@ -1,5 +1,6 @@
 module.exports = {
     transformCourse: require('./transformCourse'),
+    transformCurator: require('./transformCurator'),
     transformGallery: require('./transformGallery'),
     transformFormatGallery: require('./transformFormatGallery'),
     transformUser: require('./transformUser'),
