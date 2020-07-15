@@ -2,7 +2,7 @@ const express = require('express')
 
 const { checkUserAuthenticated } = require('../../middlewares')
 const { Gallery } = require('../../models')
-const { transformGallery, upload: { uploader, bucket } } = require('../../util')
+const { transformGallery, transformFormatGallery, upload: { uploader, bucket } } = require('../../util')
 
 const router = express.Router()
 
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
             status: 200,
             success: true,
             data: {
-                gallery: gallery.map(transformGallery)
+                gallery: gallery.map(req.query.format === 'true' ? transformFormatGallery : transformGallery)
             }
         })
     } catch (err) {

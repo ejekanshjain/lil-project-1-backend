@@ -188,6 +188,10 @@ Content-Type: application/json
 GET http://localhost:5000/api/gallery
 
 
+### Get All Gallery Images Formatted for react image gallery library
+GET http://localhost:5000/api/gallery?format=true
+
+
 ### Get All Deleted Gallery Images
 GET http://localhost:5000/api/gallery?deleted=true
 Authorization: 
