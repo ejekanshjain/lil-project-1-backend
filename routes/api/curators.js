@@ -10,6 +10,8 @@ router.get('/', async (req, res) => {
     try {
         const curators = await Curator.find({
             deleted: req.query.deleted === 'true' ? true : false
+        }).sort({
+            createdAt: -1
         })
         res.json({
             status: 200,
