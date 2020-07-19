@@ -1,29 +1,342 @@
-POST   http://localhost:5000/AdminPanelUsers
+GET http://localhost:5000
+
+
+### Check Server Status
+GET http://localhost:5000/api
+
+
+### Get all Admin Users
+GET http://localhost:5000/api/admin
+
+
+### Add Admin User
+POST http://localhost:5000/api/admin
 Content-Type: application/json
 
 {
-"name":"LOL","email": "LOL", "password": "LOL"
+    "email": "admin@admin.com",
+    "password": "password"
+}
+
+
+### Admin Login
+POST http://localhost:5000/api/admin/login
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "password": "password"
+}
+
+
+### Get all Demo Requests
+GET http://localhost:5000/api/demorequests
+Authorization: 
+
+
+### Get One Demo Request
+GET http://localhost:5000/api/demorequests/5f07020c1ec8572fa8585f2c
+Authorization: 
+
+
+### Add Demo Request
+POST http://localhost:5000/api/demorequests
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "message": "This is optional"
+}
+
+
+### Get All Contact Us Details
+GET http://localhost:5000/api/contactus
+Authorization: 
+
+
+### Get One Contact Us Detail
+GET http://localhost:5000/api/contactus/5f0704b2acc11e363b01251f
+Authorization: 
+
+
+### Add Contact Us
+POST http://localhost:5000/api/contactus
+Content-Type: application/json
+
+{
+    "name": "tester",
+    "email": "test@test.com",
+    "subject": "Testing...",
+    "message": "This is test message."
+}
+
+
+### Get All Testimonials
+GET http://localhost:5000/api/testimonials
+
+
+### Get All Deleted Testimonials
+GET http://localhost:5000/api/testimonials?deleted=true
+Authorization: 
+
+
+### Get One Testimonial
+GET http://localhost:5000/api/testimonials/5f0aa2e2c9da121df8368fc2
+
+
+### Add Testimonial
+POST http://localhost:5000/api/testimonials
+Authorization: 
+
+{
+    "name": "Test Name",
+    "email": "test@test.com",
+    "comment": "test comment",
+    "image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Delete Testimonial
+DELETE http://localhost:5000/api/testimonials/5f0aa2e2c9da121df8368fc2
+Authorization: 
+
+
+### Restore Testimonial
+DELETE http://localhost:5000/api/testimonials/5f0aa2e2c9da121df8368fc2?delete=false
+Authorization: 
+
+
+### Get All Courses
+GET http://localhost:5000/api/courses
+
+
+### Get All Deleted Courses
+GET http://localhost:5000/api/courses?deleted=true
+Authorization: 
+
+
+### Get One Course
+GET http://localhost:5000/api/courses/5f0bf22f86b6251e54d78083
+
+
+### Add Course
+POST http://localhost:5000/api/courses
+Authorization: 
+Content-Type: application/json
+
+{
+    "title": "Marhmello Come & Go",
+    "videoUrl": "https://www.youtube.com/watch?v=Dxm3cHrKcbA"
+}
+
+
+### Delete Course
+DELETE http://localhost:5000/api/courses/5f0bf22f86b6251e54d78083
+Authorization: 
+
+
+### Restore Course
+DELETE http://localhost:5000/api/courses/5f0bf22f86b6251e54d78083?delete=false
+Authorization: 
+
+
+### Get About Us
+GET http://localhost:5000/api/about
+
+
+### Get all About Us
+GET http://localhost:5000/api/about?all=true
+Authorization: 
+
+
+### Add About Us
+POST http://localhost:5000/api/about
+Authorization: 
+Content-Type: application/json
+
+{
+    "whatAreWe": "Developers at LIL",
+    "whatWereWe": "The Techno Students",
+    "whatWeDo": "Eat Sleep Code Repeat!"
+}
+
+
+### Get Contact Details
+GET http://localhost:5000/api/contactdetails
+
+
+### Get all Contact Details
+GET http://localhost:5000/api/contactdetails?all=true
+Authorization: 
+
+
+### Add Contact Details
+POST http://localhost:5000/api/contactdetails
+Authorization: 
+Content-Type: application/json
+
+{
+    "address": "IT Park, Udaipur (Rajasthan), INDIA",
+    "email": "learnindialearn@securelearning.com",
+    "contactNumber": "9876543210",
+    "linkedin": "https://linkedin.com/securelearning",
+    "facebook": "https://facebook.com/securelearning"
+}
+
+
+### Get All Gallery Images
+GET http://localhost:5000/api/gallery
+
+
+### Get All Gallery Images Formatted for react image gallery library
+GET http://localhost:5000/api/gallery?format=true
+
+
+### Get All Deleted Gallery Images
+GET http://localhost:5000/api/gallery?deleted=true
+Authorization: 
+
+
+### Get One Gallery Image
+GET http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2
+
+
+### Add Gallery Image
+POST http://localhost:5000/api/gallery
+Authorization: 
+
+{
+    "label": "test",
+    "image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Delete Gallery Image
+DELETE http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2
+Authorization: 
+
+
+### Restore Gallery Image
+DELETE http://localhost:5000/api/gallery/5f0aa2e2c9da121df8368fc2?delete=false
+Authorization: 
+
+
+### Get all Team Members
+GET http://localhost:5000/api/teammembers
+
+
+### Get all Deleted Team Members
+GET http://localhost:5000/api/teammembers?deleted=true
+
+
+### Get One Team Member
+GET http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed
+
+
+### Add Team Member
+POST http://localhost:5000/api/teammembers
+Authorization: 
+
+{
+	"name": "Ekansh Jain",
+	"email": "ejekanshjain@gmail.com",
+	"contactNumber": "9530077351",
+	"description": "The Beginning is the End, And the End is the Beginning",
+	"linkedin": "https://linkedin.com/in/ejekanshjain",
+	"twitter": "https://twitter.com",
+	"image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Update One team Memeber
+PATCH http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed
+Authorization: 
+
+{
+	"name": "Ekansh Jain",
+	"email": "ejekanshjain@gmail.com",
+	"contactNumber": "9530077351",
+	"description": "The Beginning is the End, And the End is the Beginning",
+	"linkedin": "https://linkedin.com/in/ejekanshjain",
+	"twitter": "https://twitter.com",
+	"image": "jpg, jpeg or png less than 5 mb and is optional"
+}
+
+
+### Delete Team Member
+DELETE http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed
+Authorization: 
+
+
+### Restore Team Member
+DELETE http://localhost:5000/api/teammembers/5f0d9f1a252fba2738edc6ed?delete=false
+Authorization: 
+
+
+### Get all Curators
+GET http://localhost:5000/api/curators
+
+
+### Get all Deleted Curators
+GET http://localhost:5000/api/curators?deleted=true
+
+
+### Get One Curator
+GET http://localhost:5000/api/curators/5f0d9f1a252fba2738edc6ed
+
+
+### Add Curator
+POST http://localhost:5000/api/curators
+Authorization: 
+
+{
+	"name": "Ekansh Jain",
+	"email": "ejekanshjain@gmail.com",
+	"contactNumber": "9530077351",
+	"title": "The Developer",
+	"description": "The Beginning is the End, And the End is the Beginning",
+	"github": "https://github.com/ejekanshjain",
+	"linkedin": "https://linkedin.com/in/ejekanshjain",
+	"twitter": "https://twitter.com",
+	"image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Update One Curator
+PATCH http://localhost:5000/api/curators/5f0d9f1a252fba2738edc6ed
+Authorization: 
+
+{
+	"name": "Ekansh Jain",
+	"email": "ejekanshjain@gmail.com",
+	"contactNumber": "9530077351",
+	"title": "The Developer",
+	"description": "The Beginning is the End, And the End is the Beginning",
+	"github": "https://github.com/ejekanshjain",
+	"linkedin": "https://linkedin.com/in/ejekanshjain",
+	"twitter": "https://twitter.com",
+	"image": "jpg, jpeg or png less than 5 mb"
+}
+
+
+### Delete Curator
+DELETE http://localhost:5000/api/curators/5f0d9f1a252fba2738edc6ed
+Authorization: 
+
+
+### Restore Curator
+DELETE http://localhost:5000/api/curators/5f0d9f1a252fba2738edc6ed?delete=false
+Authorization: 
+
+
+### bot service
+POST http://localhost:5000/api/bot/message
+Content-Type: application/json
+
+{
+    "message" : "text here",
+    "conversation_id": "set conversation_id here"
 }
 
 
 ###
-POST http://localhost:5000/login 
-Content-Type: application/json
-
-{
-"email": "LOL", "password": "LOL"
-}
-
-
-
-###
-GET http://localhost:5000/adminPanelUsers/
-
-###
-POST http://localhost:5000/login
-Content-Type: application/json
-
-{
-    "email": "ejekanshjain@gmail.com",
-    "password": "$2a$10$rArAQabn5KHtED0Q13bFHeUg7lO4IjDPovkYM3iZt5TBJYA25Nrt2"
-}

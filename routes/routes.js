@@ -1,15 +1,21 @@
 const express = require('express')
-//const bcrypt = require('bcryptjs')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send('Hello World')
-})
+router.get('/', (req, res) =>
+    res.json({
+        status: 200,
+        success: true,
+        message: 'Server Up and Running!'
+    }))
 
-router.use('/contactus', require('./ContactUs'))
-router.use('/Demorequests', require('./demoRequests'))
-router.use('/AdminPanelUsers', require('./adminPanelUsers'))
-router.use('/login', require('./login'))
+router.use('/api', require('./api'))
+
+router.use('*', (req, res) =>
+    res.status(404).json({
+        status: 404,
+        success: false,
+        message: 'No resources exists at this route.'
+    }))
 
 module.exports = router

@@ -1,20 +1,23 @@
 const mongoose = require('mongoose')
 
-const ContactUsSchema = new mongoose.Schema({
-    name: {
+const ContactDetailsSchema = new mongoose.Schema({
+    address: {
         type: String,
         required: true
     },
     email: {
         type: String,
-        required: true,
-        // unique: true
+        required: true
     },
-    subject: {
+    contactNumber: {
+        type: Number,
+        required: true
+    },
+    linkedin: {
         type: String,
         required: true
     },
-    message: {
+    facebook: {
         type: String,
         required: true
     }
@@ -22,4 +25,4 @@ const ContactUsSchema = new mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('ContactUs', ContactUsSchema)
+module.exports = mongoose.model('ContactDetails', ContactDetailsSchema)
